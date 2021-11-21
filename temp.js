@@ -1,40 +1,8 @@
-$(function () {
-    class User {
-        constructor(uname, pwd, clearence) {
-            this.naam = uname;
-            this.guptrahasya = pwd;
-            this.ijaazat = clearence;
-            }
-            static encryptpwMD4(){
-                console.log('started');
-                $.ajax('https://api.hashify.net/hash/md4/hex', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain'
-                    },
-                    data: this.guptrahasya,
-                    success: (resp, status) => {
-                        this.guptrahasya = resp.Digest;
-                        alert(this.guptrahasya)
-                    }
-                })
-            }
-            static another(){
-                alert(this);
-            }
-        }
-    var user1 = new User('ayush', 'ayush2301', 'Level A');
-    function encrypt(x) {
-        $.ajax('https://api.hashify.net/hash/md4/hex', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'text/plain'
-            },
-            data: x.guptrahasya,
-            success: (resp, status) => {
-                x.guptrahasya = resp.Digest;
-            }
-        })
-    }
-    encrypt(user1);
-})
+var cryptojs = require('crypto-js')
+
+
+var cipher = cryptojs.AES.encrypt("message","secretkey123").toString();
+var mess = cryptojs.AES.decrypt("U2FsdGVkX19lvVB5syA5JDeX+a1NXwtbLwhvW85EzTLBQxpRnxALsZuEi6WnMVdhvZLPbSErlpJvTQP7+fzeCtVvdOnG/WPXKKoO3IimvcDjOs+ub6TpTe/0offfrF7B","ayushsecret").toString(cryptojs.enc.Utf8);
+var obj = JSON.parse(mess);
+console.log(cipher);
+console.log(obj.pwd);

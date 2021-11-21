@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  In Local Storage: 
+  <div id="result"></div>
+
+  <script>
+    if (typeof (Storage) !== "undefined") {
+      let res = document.getElementById("result")
+      res.innerHTML = localStorage.getItem("onesignintoken");
+    } else {
+      document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+    }
+  </script>
+
+</body>
+
+</html>

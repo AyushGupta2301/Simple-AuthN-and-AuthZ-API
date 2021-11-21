@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Site C</title>
+    <link rel="stylesheet" type="text/css" href="../Resources/mainstyle.css">
+    <script language="javascript" type="text/javascript" src="../Resources/jquery-min.js"></script>
+</head>
+
+<body>
+    <script src="signinreq.js"></script>
+    <div class="mainwrapper">
+        <div class="header">
+            <span>Sign In - Site C</span>
+            <div class="navbar">
+                <ul>
+                    <li><a href="./signin.html">Sign In</a></li>
+                    <li><a href="./signup.html">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mainbody">
+            <div class="datamain">
+                <span>Username : <input type="text" name="uname" ></span>
+                <span>Password : <input type="password" name="pwd" ></span>
+                <span>Access Level :
+                    <select name="clearence">
+                    <option>Level A</option>
+                    <option>Level B</option>
+                    </select>
+                </span>
+            </div>
+            <div class="submitbar">
+                <button type="button" id="signinsubmit">Submit</button>
+            </div>
+        </div>
+        <h1 style="text-align: center;">---OR---</h1>
+        <div class="bottomfiller"><button type="button" id="prompt">Sign In Via One-SignIn</button></div>
+    </div>
+</body>
+
+</html>

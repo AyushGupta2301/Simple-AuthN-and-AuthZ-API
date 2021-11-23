@@ -41,11 +41,12 @@ function sign_up(req, res) {
                 if (err) throw err;
                 console.log(resp);
             })
+            res.writeHead(200, "OK", { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+            res.write(JSON.stringify(buffer));
+            res.end();
 
         })
-        res.writeHead(200, "OK", { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-        res.write(JSON.stringify(buffer));
-        res.end();
+        
     })
 }
 

@@ -1,8 +1,38 @@
-var cryptojs = require('crypto-js')
+var http = require('http');
+var url = require('url');
+var strdec = require('string_decoder').StringDecoder;
+const { JSDOM } = require("jsdom");
+const { window } = new JSDOM("");
+const $ = require("jquery")(window);
 
+function test() {
+    var x = [];
+    let myPromise = new Promise(function (myResolve) {
+        // "Producing Code" (May take some time)
+        $.ajax('http://127.0.0.1:8081/sign_up', {
+            method: 'POST',
+            data: JSON.stringify({
+                'uname': "test01",
+                'pwd': "test01",
+                'clearence': "test01"
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            success: function (resp, status) {
+                //console.log("User " + JSON.parse(resp).uname + " registered");
+                console.log('success');
+                x.push(resp);
+                myResolve("ok");
+            }
+        });
+    });
+    // "Consuming Code" (Must wait for a fulfilled Promise)
+    myPromise.then(
+        function (value) {
+            console.log(x);
+        });
+    console.log(x);
+}
 
-var cipher = cryptojs.AES.encrypt("message","secretkey123").toString();
-var mess = cryptojs.AES.decrypt("U2FsdGVkX19lvVB5syA5JDeX+a1NXwtbLwhvW85EzTLBQxpRnxALsZuEi6WnMVdhvZLPbSErlpJvTQP7+fzeCtVvdOnG/WPXKKoO3IimvcDjOs+ub6TpTe/0offfrF7B","ayushsecret").toString(cryptojs.enc.Utf8);
-var obj = JSON.parse(mess);
-console.log(cipher);
-console.log(obj.pwd);
+test();
